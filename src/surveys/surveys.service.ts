@@ -3,10 +3,13 @@ import { Injectable } from '@nestjs/common';
 import { CreateSurveyDto } from './dto/create-survey.dto';
 import { UpdateSurveyDto } from './dto/update-survey.dto';
 import { PrismaService } from './../prisma/prisma.service';
+import { findManyCursorConnection } from '@devoxa/prisma-relay-cursor-connection';
+import { Prisma } from '@prisma/client';
+import { ConnectionArgs } from 'src/page/connection-args.dto';
 
 @Injectable()
 export class SurveysService {
-  constructor(private prisma: PrismaService) {}
+  constructor( private prisma: PrismaService ) {}
 
   //CRUD operations
   create(createSurveyDto: CreateSurveyDto) {
@@ -34,5 +37,22 @@ export class SurveysService {
 
   findDrafts() {
     return this.prisma.survey.findMany({ where: { published: false } });
+  }
+
+  async findPage(connectionArgs: ConnectionArgs) {
+    const where: Prisma.SurveyWhereInput = {
+      published: true,
+    };
+    return findManyCursorConnection(
+      (args) =>
+        this.prisma.survey.findMany({
+          ...args[0], // 👈 apply paging arguments
+          where: where,
+        }),
+      () => this.prisma.survey.count({
+          where: where, // 👈 apply paging arguments
+        }),
+        connectionArgs, // 👈 use connection arguments
+    );
   }
 }

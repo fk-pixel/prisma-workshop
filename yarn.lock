@@ -363,6 +363,13 @@
   dependencies:
     "@cspotcode/source-map-consumer" "0.8.0"
 
+"@devoxa/prisma-relay-cursor-connection@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@devoxa/prisma-relay-cursor-connection/-/prisma-relay-cursor-connection-2.1.0.tgz#16cc6c839817b96ced5805bdae6f87e4fe3b7ec8"
+  integrity sha512-rtZKFXzodHYfts+ODJJ1DsDykJJjGC7fOvD+QAsm4mu+enK5rA1Ezw+tAB17CrQOroXX6/iEJKdgiEB5drz3Ww==
+  dependencies:
+    graphql-fields "^2.0.3"
+
 "@eslint/eslintrc@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-1.1.0.tgz#583d12dbec5d4f22f333f9669f7d0b7c7815b4d3"
@@ -2621,6 +2628,11 @@ graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.4, 
   version "4.2.9"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.9.tgz#041b05df45755e587a24942279b9d113146e1c96"
   integrity sha512-NtNxqUcXgpW2iMrfqSfR73Glt39K+BLwWsPs94yR63v45T0Wbej7eRmL5cWfwEgqXnmjQp3zaJTshdRW/qC2ZQ==
+
+graphql-fields@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/graphql-fields/-/graphql-fields-2.0.3.tgz#5e68dff7afbb202be4f4f40623e983b22c96ab8f"
+  integrity sha512-x3VE5lUcR4XCOxPIqaO4CE+bTK8u6gVouOdpQX9+EKHr+scqtK5Pp/l8nIGqIpN1TUlkKE6jDCCycm/WtLRAwA==
 
 has-flag@^3.0.0:
   version "3.0.0"
