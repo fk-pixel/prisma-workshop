@@ -1,0 +1,34 @@
+* nest cli  
+    npm i -g @nestjs/cli
+
+* nest module generate: nest g m 
+       controller generate: nest g c
+       resolver generate: nest g r
+       service generate: nest g s   
+       
+* nest watch (localhost:3030/api)
+    yarn start:dev
+
+* prisma schema migrate
+    npx prisma migrate dev --name init
+
+* create a startup data add to app for every prisma server run in package.json
+    "prisma": {
+        "seed": "ts-node prisma/seed.ts"
+    },
+
+* execute te seed fom prisma>seed.ts file   
+    npx prisma db seed --preview-feature
+
+* prisma studio
+    npx prisma studio
+    //Prisma is set up and you are now ready to access the database via PrismaClient
+
+* for prisma client to start a service in src
+    nest g mo prisma
+    nest g s prisma
+
+* the resource module generate
+    nest g resource surveys
+    
+* swagger
