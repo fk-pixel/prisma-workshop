@@ -1,20 +1,25 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query, UseGuards } from '@nestjs/common';
 import { SurveysService } from './surveys.service';
 import { CreateSurveyDto } from './dto/create-survey.dto';
 import { UpdateSurveyDto } from './dto/update-survey.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiExtraModels, ApiTags } from '@nestjs/swagger';
 import { SurveyEntity } from './entities/survey.entity';
 import { ApiCreatedResponse, ApiOkResponse } from '@nestjs/swagger';
 import { ConnectionArgs } from 'src/page/connection-args.dto';
 import { ApiPageResponse } from 'src/page/api-page-response.decorator';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { Page } from '../page/page.dto';
 
 @Controller('surveys')
 @ApiTags('surveys')
+@ApiExtraModels(Page)
 export class SurveysController {
   constructor(private readonly surveysService: SurveysService) {}
 
   @Post()
+  @UseGuards(JwtAuthGuard) 
+  @ApiBearerAuth()
   @ApiCreatedResponse({ type: [SurveyEntity] })
   create(@Body() createSurveyDto: CreateSurveyDto) {
     return this.surveysService.create(createSurveyDto);
@@ -27,6 +32,8 @@ export class SurveysController {
   }
 
   @Get('drafts')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @ApiOkResponse({ type: [SurveyEntity] })
   findDrafts() {
     return this.surveysService.findDrafts();
@@ -45,12 +52,16 @@ export class SurveysController {
   }
 
   @Patch(':surveyid')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @ApiCreatedResponse({ type: [SurveyEntity] })
   update(@Param('surveyid') surveyid: number, @Body() updateSurveyDto: UpdateSurveyDto) {
     return this.surveysService.update(+surveyid, updateSurveyDto);
   }
 
   @Delete(':surveyid')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
   @ApiOkResponse({ type: [SurveyEntity] })
   remove(@Param('surveyid') surveyid: number) {
     return this.surveysService.remove(+surveyid);

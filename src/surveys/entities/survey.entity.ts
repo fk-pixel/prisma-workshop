@@ -12,7 +12,6 @@ export class SurveyEntity implements Survey {
     title: string;
     @ApiProperty()
     creatorid: number;
-    @ApiProperty()
     reporterid: number;
     @ApiProperty({ required: false, default: false })
     published: boolean = false;
