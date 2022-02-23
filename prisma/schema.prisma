@@ -24,8 +24,7 @@ model Survey {
   title String
   creator User? @relation(name: "createdByUser", fields: [creatorid], references: [userId])
   creatorid Int?
-  reporter Reporter? @relation(name: "surveyByReporter", fields: [reporterid], references: [reporterid])
-  reporterid Int?
+  reporters Reporter[] @relation(name: "surveyByReporter")
   questions Question[] @relation(name: "surveyByQuestion")
   published Boolean @default(false)
   createdAt DateTime @default(now()) 
