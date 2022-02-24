@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { PrismaClientExceptionFilter } from './prisma-client-exception.filter';
 
 describe('PrismaClientExceptionFilter', () => {

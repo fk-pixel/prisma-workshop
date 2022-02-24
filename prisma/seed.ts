@@ -8,8 +8,8 @@ async function main() {
     await prisma.$connect();
 
     await prisma.user.deleteMany({});
-    await prisma.survey.deleteMany({});
-    await prisma.question.deleteMany({});
+    //await prisma.survey.deleteMany({});
+    //await prisma.question.deleteMany({});
 
     //Users
     await prisma.user.create({
@@ -28,7 +28,7 @@ async function main() {
         }
     });
 
-    //Surveys
+    /* //Surveys
     await prisma.survey.create({
         data: {
             title: "Anket1",
@@ -42,7 +42,7 @@ async function main() {
             question: "Soru1",
             answer: "Cevap1"
         }    
-    });
+    }); */
 }
 
 main()

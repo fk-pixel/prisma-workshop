@@ -12,9 +12,20 @@ export class SurveysService {
   constructor( private prisma: PrismaService ) {}
 
   //CRUD operations
-  create(createSurveyDto: CreateSurveyDto) {
-    return this.prisma.survey.create({ data: createSurveyDto });
-  }
+  async create(survey: CreateSurveyDto) {
+    const creator = survey.creator;
+    return this.prisma.survey.create({ 
+      data: {
+        ...survey,
+        creator: {
+          create: creator
+        },
+      },
+      include: {
+        creator: true,
+      },
+    });
+  }  
 
   findAll() {
     return this.prisma.survey.findMany({ where: { published: true } });

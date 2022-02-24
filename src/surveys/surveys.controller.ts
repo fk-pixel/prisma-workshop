@@ -66,7 +66,5 @@ export class SurveysController {
   remove(@Param('surveyid') surveyid: number) {
     return this.surveysService.remove(+surveyid);
   }
-
-
   
 }

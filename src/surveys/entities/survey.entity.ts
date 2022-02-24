@@ -8,15 +8,19 @@ import { Survey } from '@prisma/client';
 export class SurveyEntity implements Survey {
     @ApiProperty()
     surveyid: number;
+    
     @ApiProperty()
     title: string;
+    
     @ApiProperty()
     creatorid: number;
-    reporterid: number;
+    
     @ApiProperty({ required: false, default: false })
     published: boolean = false;
+    
     @ApiProperty()
     createdAt: Date;
+    
     @ApiProperty()
     updatedAt: Date;
 }

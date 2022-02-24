@@ -17,13 +17,13 @@ model User {
   password String
   image String?
   createdAt DateTime @default(now())
-  surveys Survey[] @relation(name: "createdByUser")
+  surveys Survey[] 
 }
 model Survey {
   surveyid Int @id @default(autoincrement())
   title String
-  creator User? @relation(name: "createdByUser", fields: [creatorid], references: [userId])
-  creatorid Int?
+  creator User @relation(fields: [creatorid], references: [userId])
+  creatorid Int
   reporters Reporter[] @relation(name: "surveyByReporter")
   questions Question[] @relation(name: "surveyByQuestion")
   published Boolean @default(false)

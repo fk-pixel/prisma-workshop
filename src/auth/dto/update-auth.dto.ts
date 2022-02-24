@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { PartialType } from '@nestjs/swagger';
 import { CreateAuthDto } from './create-auth.dto';
 

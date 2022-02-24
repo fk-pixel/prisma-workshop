@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
@@ -11,7 +12,7 @@ import { env } from 'process';
     PassportModule,
     JwtModule.register({
       secret: env.jwtSecret,
-      signOptions: { expiresIn: '60s' }, // e.g. 7d, 24h
+      signOptions: { expiresIn: '12h' }, // e.g. 7d, 24h
     }),
   ],
   controllers: [AuthController],
